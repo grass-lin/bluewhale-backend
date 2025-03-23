@@ -7,23 +7,34 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class StoreVO {
 
-  private Integer id;
+  private Long id;
 
   private String name;
 
-  private Date createTime;
+  private String introduction;
+
+  private String description;
 
   private String logoURL;
 
-  public Store toPO(int userId) {
-    return new Store(this, userId);
+  public StoreVO(Store store) {
+    this.id = store.getId();
+    this.name = store.getName();
+    this.introduction = store.getIntroduction();
+    this.description = store.getDescription();
+    this.logoURL = store.getLogoURL();
   }
+
+  public StoreVO(String name, String introduction, String des) {
+    this.name = name;
+    this.introduction = introduction;
+    this.description = des;
+  }
+
 }

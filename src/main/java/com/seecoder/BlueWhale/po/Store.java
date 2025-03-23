@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -17,33 +16,29 @@ public class Store {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
   @Column(name = "id")
-  private Integer id;
+  private Long id;
 
   @Basic
   @Column(name = "name")
   private String name;
 
   @Basic
-  @Column(name = "create_time")
-  private Date createTime;
+  @Column(name = "description")
+  private String description;
 
   @Basic
-  @Column(name = "user_id")
-  private Integer userId;
+  @Column(name = "introduction")
+  private String introduction;
 
   @Basic
   @Column(name = "logo_url")
   private String logoURL;
 
-  public Store(StoreVO storeVO, int userId) {
-    this.id = storeVO.getId();
+  public Store(StoreVO storeVO, String url) {
     this.name = storeVO.getName();
-    this.createTime = storeVO.getCreateTime();
-    this.userId = userId;
-    this.logoURL = storeVO.getLogoURL();
+    this.description = storeVO.getDescription();
+    this.introduction = storeVO.getIntroduction();
+    this.logoURL = url;
   }
 
-  public StoreVO toVO() {
-    return new StoreVO(this.id, this.name, this.createTime, this.logoURL);
-  }
 }
