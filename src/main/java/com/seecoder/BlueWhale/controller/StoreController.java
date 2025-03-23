@@ -39,7 +39,6 @@ public class StoreController {
 
   }
 
-  // TODO:
   @PostMapping("/new")
   public ResultVO<Boolean> addStore(@RequestPart("name") String name, @RequestPart("introduction") String intro,
       @RequestPart("description") String des, @RequestPart("image") MultipartFile image) {
@@ -61,7 +60,6 @@ public class StoreController {
 
   }
 
-  // TODO:
   @PostMapping("/remove")
   public ResultVO<Boolean> removeStore(@RequestBody Map<String, Object> requestBody) {
     Integer storeIdInt = (Integer) requestBody.get("store_id");
